@@ -170,11 +170,11 @@ def show_av(n)
     i = 0
     while i < n do 
         x = start_test
-        puts x.inspect 
-        test1.push(x[0].total)
-        test2.push(x[1].total)
-        test3.push(x[2].total)
-        test4.push(x[3].total)
+        
+        test1.push(x[0].total * 1000)
+        test2.push(x[1].total * 1000)
+        test3.push(x[2].total * 1000)
+        test4.push(x[3].total * 1000)
         i += 1
     end
     
@@ -186,4 +186,4 @@ def show_av(n)
 end
 
 
- show_av(10)
+ show_av(50)
