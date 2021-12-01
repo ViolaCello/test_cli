@@ -247,6 +247,7 @@ def run_test(n, t)
   i = 0
   while i < t 
   x = testing2(n)
+  
   test1.push(x[0].total * 100 )
   test2.push(x[1].total * 100 )
   i += 1
@@ -256,7 +257,7 @@ def run_test(n, t)
   puts test2.sum(0.0) / (t-1)
 end
 
- run_test(100000,100)
+ run_test(10,2)
 
 # test_insert(10)
 # test_remove(1000000)

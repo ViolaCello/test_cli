@@ -142,13 +142,13 @@ def binary_search_iterative(query, arr)
   end
 end
 
-def start_test(n = 1)
-  i = 0 
-  while i < n 
+def start_test
+ 
   tree = create_unsorted
   arr = create_sort_array(tree)
   q = rand(9999999)
-  Benchmark.bm do |x|
+
+  Benchmark.bmbm do |x|
     x.report {  tree.find_recursive(q) }
   x.report {  tree.find(q) }
   x.report {  binary_search_iterative(q,arr) }
@@ -158,8 +158,7 @@ def start_test(n = 1)
 
  
   end
-i += 1
-end
+
 end
 
 def show_av(n)
@@ -170,18 +169,21 @@ def show_av(n)
 
     i = 0
     while i < n do 
-        x = start_test(1)
+        x = start_test
+        puts x.inspect 
         test1.push(x[0].total)
         test2.push(x[1].total)
         test3.push(x[2].total)
         test4.push(x[3].total)
+        i += 1
     end
     
-    puts "find_recursive = #{test1.sum / n}"
-    puts "tree.find = #{test2.sum / n}"
-    puts "binary_search_iterative = #{test3.sum / n}"
-    puts "Ruby.include? = #{test4.sum / n}"
+    puts "find_recursive = #{test1.sum(0.0) / n}"
+    puts "tree.find = #{test2.sum(0.0) / n}"
+    puts "binary_search_iterative = #{test3.sum(0.0) / n}"
+    puts "Ruby.include? = #{test4.sum(0.0) / n}"
 
 end
 
 
+ show_av(10)
