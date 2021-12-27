@@ -62,3 +62,39 @@ def testing_if_works(n)
     end
 end
 
+
+def start_test(arr)
+    arr.each do |num| 
+        puts "string first"
+
+    Benchmark.bm do |x| 
+        x.report { decimal_to_binary_string(num) }
+        x.report { decimal_to_binary_array(num) }
+    end
+    puts "array first"
+    Benchmark.bm do |x| 
+        x.report { decimal_to_binary_array(num) }
+        x.report { decimal_to_binary_string(num) }
+    end
+end
+end
+
+# This proved that decimal_to_binary_string was A LOT faster.
+# arr = random_array(10, 9999999)
+# start_test(arr)
+
+def decimal_to_binary_ruby(n)
+    return n.to_s(2)
+end
+
+arr = random_array(10, 9999999)
+def test_string_vs_ruby(arr)
+    arr.each do |num| 
+        Benchmark.bm do |x| 
+            x.report { decimal_to_binary_ruby(num) }
+            x.report { decimal_to_binary_string(num)}
+        end
+    end
+end
+
+test_string_vs_ruby(arr)
