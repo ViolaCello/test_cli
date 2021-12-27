@@ -87,14 +87,34 @@ def decimal_to_binary_ruby(n)
     return n.to_s(2)
 end
 
-arr = random_array(10, 9999999)
+arr = random_array(100, 9999999)
 def test_string_vs_ruby(arr)
     arr.each do |num| 
         Benchmark.bm do |x| 
-            x.report { decimal_to_binary_ruby(num) }
             x.report { decimal_to_binary_string(num)}
+            x.report { decimal_to_binary_ruby(num) }
+            
         end
     end
 end
 
-test_string_vs_ruby(arr)
+# .to_s(2) is slightly faster than self-created method
+# test_string_vs_ruby(arr)
+
+def binary_to_decimal(n)
+    if n.is_a?(String)
+        n = n.split('')
+    end
+    result = 0
+    j = 0
+    while n.length > 0 
+        digit = n.pop().to_i
+        if digit == 1 
+            result += 2**j 
+        end
+        j += 1
+    end
+    return result 
+end
+
+puts binary_to_decimal("01100000000011010110")
